@@ -14,4 +14,25 @@ app.get('/', function (request, response) {
     response.send('Hello there');
     response.end();
 });
-http.createServer(app).listen('8080');
+
+app.get('/streets', function (request, response) {
+    response.send({data:"This is a data from the streets!"});
+    response.end();
+});
+
+app.get('/music', function (request, response) {
+    response.send({data:"Here's some music for your soul!"});
+    response.end();
+});
+
+app.get('/poetry', function (request, response) {
+    response.send({data:"This is some good poems to soothe ya soul!"});
+    response.end();
+});
+
+app.get('/all', function (request, response) {
+    response.send({data:"This is everything that has been posted!"});
+    response.end();
+});
+
+http.createServer(app).listen('4201');
