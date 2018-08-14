@@ -1,8 +1,10 @@
 var http = require('http');
 var express = require('express');
+var path = require('path');
 
 var app = express();
 
+app.use(express.static(path.join(__dirname, 'artips-frontend/dist')));
 app.use(function (request, response, next){
     response.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
     response.setHeader('Access-Control-Allow-Methods', 'GET, POST');
@@ -11,7 +13,13 @@ app.use(function (request, response, next){
 });
 
 app.get('/', function (request, response) {
-    response.send('Hello there');
+    response.sendFile('/artips-frontend/dist/index.html');
+    response.end();
+});
+
+//GET
+app.get('/film', function (request, response) {
+    response.send({data:"This is some cool film for ya 'Netflix-and-chill'!"});
     response.end();
 });
 
